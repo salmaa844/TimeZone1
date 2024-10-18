@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\TimeZone.PL.props" />
+</Project>

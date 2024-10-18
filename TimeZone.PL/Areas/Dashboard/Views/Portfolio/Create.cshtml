@@ -1,0 +1,33 @@
+﻿@model PortfoiloFormVM
+
+@section Header {
+    Services
+}
+
+
+
+<div class="col-md-12">
+
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Creata</h3>
+        </div>
+
+        <form asp-controller="Portfolio" asp-action="Create" >
+            <div class="card-body">
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" placeholder="Enter Service Name">
+                </div>
+               
+               
+
+            </div>
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+
+</div>

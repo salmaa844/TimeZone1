@@ -1,0 +1,23 @@
+﻿@model ProductDetailsVM
+
+@section Header {
+   Product Details
+}
+
+<div class="col-md-12">
+
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Details for @Model.Name</h3>
+        </div>
+
+        <ul>
+            <li>Name : @Model.Name</li>
+            <li>Description : @Model.Description</li>
+            <li>price : @Model.Price</li>
+            
+        </ul>
+
+    </div>
+
+</div>

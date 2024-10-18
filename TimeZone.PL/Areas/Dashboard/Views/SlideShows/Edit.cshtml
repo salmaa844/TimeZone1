@@ -1,0 +1,69 @@
+﻿@model SlideShowFormVM
+
+@section Header {
+    Edit slides
+}
+
+
+
+
+<div class="col-md-12">
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Update</h3>
+        </div>
+
+        <form asp-controller="SlideShows" asp-action="Edit" enctype="multipart/form-data">
+            <div class="card-body">
+                <div class="form-group">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="ImgeName" />
+                   
+                </div>
+                <div class="form-group">
+                    <label asp-for="status"></label>
+                    <input asp-for="status">
+                    <span>@(Model.status ? "Hiden" : "Show")</span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Image"></label>
+                    <input asp-for="Image" class="form-control-file imageInput" />
+
+                   
+                    <div class="mt-2">
+                        @if (!string.IsNullOrEmpty(Model.ImgeName))
+                        {
+                            <img id="imagePreview" src="~/files/slides/@Model.ImgeName" style="max-width: 200px;" />
+                        }
+                        else
+                        {
+                            <img id="imagePreview" style="display: none; max-width: 200px;" />
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        document.querySelector(".imageInput").addEventListener("change", (event) => {
+            const file = event.target.files[0];
+            const imagePreview = document.querySelector("#imagePreview");
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = "block";
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+}
